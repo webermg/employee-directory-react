@@ -82,8 +82,24 @@ class App extends Component {
       return Object.assign({}, item)
     });
     copy.sort((item1, item2) => {
-      if (item1[field] > item2[field]) return dir;
-      else return -dir;
+      if(field !== "dob") {
+        if (item1[field] > item2[field]) return dir;
+        else return -dir;
+      }
+      else {
+        const dob1 = item1.dob.split(/\//);
+        const dob2 = item2.dob.split(/\//);
+        if(dob1[2] > dob2[2]) return dir;
+        else if(dob1[2] < dob2[2]) return -dir;
+        else {
+          if(dob1[0] > dob2[0]) return dir;
+          else if(dob1[0] < dob2[0]) return -dir;
+          else {
+            if(dob1[1] > dob2[1]) return dir;
+            else return -dir;
+          }
+        }
+      }
     })
     return copy;
   }
