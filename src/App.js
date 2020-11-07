@@ -21,8 +21,6 @@ class App extends Component {
     }
   }
 
-  
-
   //-----------lifecycle--------------
 
   componentDidMount() {
